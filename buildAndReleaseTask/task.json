@@ -1,0 +1,138 @@
+{
+  "id": "56d02056-8a57-49b3-8029-fa3eaeaafeef",
+  "name": "winRmWindowsService",
+  "friendlyName": "WinRM - Windows Service Management",
+  "description": "Connect via WinRM, to create or update the windows service.",
+  "helpMarkDown": "",
+  "category": "Utility",
+  "visibility": [
+    "Build",
+    "Release"
+  ],
+  "author": "Santin Pedro",
+  "version": {
+    "Major": "0",
+    "Minor": "1",
+    "Patch": "0"
+  },
+  "instanceNameFormat": "WinRM - Windows Service Management $(message)",
+  "groups": [
+        {
+            "name": "windows_service",
+            "displayName": "Windows Service",
+            "isExpanded": true
+        },
+		{
+            "name": "log_on_as",
+            "displayName": "Log on as",
+            "isExpanded": true
+        }
+    ],
+  "inputs": [
+	{
+      "name": "machines",
+      "type": "string",
+      "label": "Machines",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": ""
+    },
+	{
+      "name": "adminLogin",
+      "type": "string",
+      "label": "Admin Login",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": ""
+    },
+	{
+      "name": "password",
+      "type": "string",
+      "label": "Password",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": ""
+    },
+	{
+		"name": "createUpdateService",
+		"type": "boolean",
+		"label": "Create or Update Service",
+		"defaultValue": "true",
+		"required": false,
+		"helpMarkDown": "",
+		"groupName": "windows_service"
+	},
+    {
+      "name": "serviceName",
+      "type": "string",
+      "label": "Service Name",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "",
+	  "groupName": "windows_service"
+    },
+	{
+      "name": "serviceDisplay",
+      "type": "string",
+      "label": "Service Display",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "",
+	  "groupName": "windows_service"
+    },
+	{
+      "name": "serviceDescription",
+      "type": "string",
+      "label": "Service Description",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "",
+	  "groupName": "windows_service"
+    },
+	{
+      "name": "physicalPath",
+      "type": "string",
+      "label": "Physical Path",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "",
+	  "groupName": "windows_service"
+    },
+	{
+		"name": "isLocalSystemAccount",
+		"type": "boolean",
+		"label": "Local System account",
+		"defaultValue": "true",
+		"required": false,
+		"helpMarkDown": "",
+		"groupName": "log_on_as"
+	},
+	{
+	  "name": "thisAccount",
+      "type": "string",
+      "label": "This account",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "",
+	  "groupName": "log_on_as",
+	  "visibleRule": "isLocalSystemAccount = false"
+	},
+	{
+	  "name": "thisAccountPassword",
+      "type": "string",
+      "label": "Password",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "",
+	  "groupName": "log_on_as",
+	  "visibleRule": "isLocalSystemAccount = false"
+	}
+  ],
+  "execution": {
+    "PowerShell": {
+      "target": "scripts\\winRM_windowServiceMng.ps1",
+      "argumentFormat": "",
+      "workingDirectory": "scripts"
+    }
+  }
+}
