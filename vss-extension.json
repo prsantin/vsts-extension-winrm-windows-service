@@ -1,0 +1,36 @@
+{
+    "manifestVersion": 1,
+    "id": "winrm-windows-service-mng-task",
+    "name": "WinRM - Windows Service Management",
+    "version": "0.0.3",
+    "publisher": "SANTINPedro",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "Using WinRM connect to the host Computer, to deploy a windows service project",
+    "categories": [
+        "Build and release"
+    ],
+    "icons": {
+        "default": "images/extension-icon.png"        
+    },
+    "files": [
+        {
+            "path": "buildAndReleaseTask"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "winRmWindowsService",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "buildAndReleaseTask"
+            }
+        }
+    ]
+}
